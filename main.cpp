@@ -24,11 +24,13 @@ int main(void)
         return -1;
     }
 
-    serialFlush(fd);
-    serialPrintf(fd,"\r");
+    int i = 0;
+    for (i = 0; i < 100; i++)
+    {
+        serialPuts(fd, "010600010300D8FA\r\n");
 
-    serialPuts(fd, "12345\n");
-    serialPuts(fd, "56789\n");
+        sleep(1);
+    }
 
     serialClose(fd);
     return 0;
